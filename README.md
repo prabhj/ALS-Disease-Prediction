@@ -1,6 +1,8 @@
 # ALS Disease detection
+## (Please download the 'html' file to visualize the graphs and other interesting outputs.)
 
-Using the ALS dataset to study a rare but devastating progressive neurodegenerative disease, amyotrophic lateral sclerosis (ALS). Major clinically relevant questions include: #### What patient phenotypes can be automatically and reliably identified and used to predict the change of the ALSFRS slope over time ?
+Using the ALS dataset to study a rare but devastating progressive neurodegenerative disease, amyotrophic lateral sclerosis (ALS). Major clinically relevant questions include: 
+#### What patient phenotypes can be automatically and reliably identified and used to predict the change of the ALSFRS slope over time ?
 
 Steps Implemented :
 
