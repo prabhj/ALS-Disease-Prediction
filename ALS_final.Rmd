@@ -3,78 +3,11 @@ html_document: default
 pdf_document: default
 ---
 
-##HW 5
-##Winter 2018, DSPA (HS650) 
-##Name : Prabhjot Singh
-##SID: 82364840
-##UMich E-mail: prabhj@umich.edu
-
-####I certify that the following paper represents my own independent work and conforms with the guidelines of academic honesty described in the UMich student handbook.
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Problem 5.1
-### Design, train, and optimize a generic neural network (NN) that can learn and predict the power-functionLinks to an external site. for a given power parameter (λ∈R).     Assess the accuracy of the NN prediction of the power function. 
-
-#Gnereate Random numbers between -10 and 10 to train.
-```{r}
-rand_data = runif(1000, 0, 20)
-#In order to take input from the user
-#n = readline(prompt="Enter the power parameter : ")
-#n = as.integer(n)
-n = 2 # We take n=3 for the purpose of this homework.
-
-pwr_df <- data.frame(rand_data, pwr_data = (rand_data) ^ (n)) 
-plot(rand_data, pwr_df$pwr_data)
-```
-
-#### Train the neural net
-
-```{r}
-library(neuralnet)
-set.seed(1234)
-net.pwr <- neuralnet(pwr_data ~ rand_data,  pwr_df, hidden=50, threshold=0.1, stepmax = 1e06)
-```
-
-#### report the NN
-```{r}
-#print(net.pwr)
-```
-
-#### Generate testing data seq(from=10, to=20, step=0.1)
-```{r}
-test_data <- seq(0, 30, 0.1)
-test_data_pwr <- (test_data) ^ n
-```
-
-#### Try to predict the power values
-#### Compute or predict for test data, test_data
-```{r}
-pred_pwr <- compute(net.pwr, test_data)$net.result
-```
-
-#### compare real (test_data_pwr) and NN-predicted (pred_pwr) cube value of test_data
-
-```{r}
-plot(pred_pwr, test_data_pwr, xlim=c(0, 900), ylim=c(0,900))
-abline(0,1, col="red", lty=2)
-legend("bottomright",  c("Pred vs. Actual Power", "Pred=Actual Line"), cex=0.8, lty=c(1,2), lwd=c(2,2),col=c("black","red"))
-
-```
-
-#### compare_df
-```{r}
-compare_df <-data.frame(pred_pwr, test_data_pwr)
-
-plot(test_data, test_data_pwr)
-lines(test_data, pred_pwr, pch=22, col="red", lty=2)
-legend("bottomright",  c("Actual Power","Predicted Power"), lty=c(1,2), lwd=c(2,2),col=c("black","red"))
-```
-#### We can obsever in the above plot that the actual power value is ver close to the predicted power, although upto some extent, after which it breaks. After trying it with diifrent number of hidden layers, this seems to the better solution. 
-
-## Problem 5.2
+## Problem
 #### Use the ALS dataset to study a rare but devastating progressive neurodegenerative disease, amyotrophic lateral sclerosis (ALS). Major clinically relevant questions include: What patient phenotypes can be automatically and reliably identified and used to predict the change of the ALSFRS slope over time?
 
 ```{r}
