@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Sample Problem
 ### Design, train, and optimize a generic neural network (NN) that can learn and predict the power-functionLinks to an external site. for a given power parameter (λ∈R). Assess the accuracy of the NN prediction of the power function. 
 
-#Gnereate Random numbers between -10 and 10 to train.
+#### Generate Random numbers between -10 and 10 to train.
 ```{r}
 rand_data = runif(1000, 0, 20)
 #In order to take input from the user
